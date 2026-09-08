@@ -19,6 +19,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);
 h1{font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0 0 12px;color:#fff;letter-spacing:-.015em}
 .lede{color:#D3D7EA;font-size:18px;max-width:64ch;margin:0 0 8px}
 .note{color:var(--muted);font-size:15px;max-width:64ch;margin:0 0 40px}
+h2.sub{font-size:22px;margin:0 0 6px;color:#fff}
 .grid{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
 a.card{display:flex;align-items:center;gap:24px;position:relative;
   background:var(--surface-strong);border:1px solid var(--divider);border-radius:var(--radius);
@@ -54,6 +55,30 @@ a.card:focus-visible{outline:2px solid var(--purple-light);outline-offset:3px}
   That second tier only appears when a vertical has learning offers, so most pages are just cards.
   The section sits after Customer Stories and before Features.</p>
 
+  <h2 class="sub">Compact version, after Shadi's review</h2>
+  <p class="note">Same products, same order, same copy. The product tiles are horizontal and sit on a
+  primary-purple tint so they stand out from the cards around them, and the learning rows are smaller.
+  The section is about a third shorter at desktop, so Features moves up by roughly a screen quarter.</p>
+  <div class="grid">
+    <a class="card" href="ag-tech-products-compact.html">
+      <span class="count">2</span>
+      <span class="body"><h2>AgTech, compact</h2><p>Two tiles, no learning tier.</p></span>
+      <span class="go">Open</span>
+    </a>
+    <a class="card" href="civil-engineering-products-compact.html">
+      <span class="count">3</span>
+      <span class="body"><h2>Civil Engineering, compact</h2><p>Three tiles across.</p></span>
+      <span class="go">Open</span>
+    </a>
+    <a class="card" href="math-education-products-compact.html">
+      <span class="count">5</span>
+      <span class="body"><h2>Undergraduate Math Education, compact</h2><p>Three tiles with Wolfram U and the eTextbook Series as smaller rows beneath.</p></span>
+      <span class="go">Open</span>
+    </a>
+  </div>
+
+  <h2 class="sub">First version</h2>
+  <p class="note">Full cards with the description under each product, as reviewed on 8 September.</p>
   <div class="grid">
     <a class="card" href="ag-tech-products.html">
       <span class="count">2</span>
