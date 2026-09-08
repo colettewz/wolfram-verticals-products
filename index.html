@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Products of Relevance — vertical page mockups</title>
+<link rel="stylesheet" href="https://files.wolframcdn.com/pub/fonts/source-sans-pro/1.0/global.css">
+<style>
+:root{
+  --bg:#151528; --surface:#201E32; --surface-strong:#272342; --divider:#343A64;
+  --text:#E6E7F5; --muted:#A7AEC7; --primary:#7A62D4; --purple-light:#D1C4FF;
+  --radius:16px; --font:'Source Sans Pro',ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin-inline:auto;padding:64px 24px 96px}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0 0 12px;color:#fff;letter-spacing:-.015em}
+.lede{color:#D3D7EA;font-size:18px;max-width:64ch;margin:0 0 8px}
+.note{color:var(--muted);font-size:15px;max-width:64ch;margin:0 0 40px}
+.grid{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+a.card{display:flex;align-items:center;gap:24px;position:relative;
+  background:var(--surface-strong);border:1px solid var(--divider);border-radius:var(--radius);
+  padding:24px;text-decoration:none;color:inherit;transform:translateY(0);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+a.card:hover{transform:translateY(-3px);border-color:var(--primary);
+  box-shadow:0 14px 40px rgba(0,0,0,.5)}
+a.card:focus-visible{outline:2px solid var(--purple-light);outline-offset:3px}
+.count{flex:0 0 56px;height:56px;border-radius:12px;display:flex;align-items:center;
+  justify-content:center;background:color-mix(in srgb,var(--primary) 22%,var(--surface));
+  color:var(--purple-light);font-size:22px;font-weight:700}
+.body{flex:1 1 auto;min-width:0}
+.body h2{margin:0 0 4px;font-size:20px;line-height:1.25;color:#fff;font-weight:700}
+.body p{margin:0;color:var(--muted);font-size:15px}
+.go{color:var(--purple-light);font-weight:600;white-space:nowrap}
+.go::after{content:"\00a0\00bb"}
+.foot{border-top:1px solid var(--divider);padding-top:28px;color:var(--muted);font-size:15px}
+.foot p{margin:0 0 10px;max-width:70ch}
+.foot a{color:var(--purple-light)}
+@media (max-width:560px){
+  a.card{flex-wrap:wrap;gap:16px}
+  .body{flex-basis:100%}
+  .go{margin-left:calc(56px + 16px)}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Products of Relevance</h1>
+  <p class="lede">A new section for the <code>wolfram.com/for/*</code> vertical pages, showing the
+  Wolfram products relevant to each vertical.</p>
+  <p class="note">Products you buy are shown as cards. Courses and books sit as rows beneath them.
+  That second tier only appears when a vertical has learning offers, so most pages are just cards.
+  The section sits after Customer Stories and before Features.</p>
+
+  <div class="grid">
+    <a class="card" href="ag-tech-products.html">
+      <span class="count">2</span>
+      <span class="body"><h2>AgTech</h2><p>Wolfram|One, AI Products. Cards only.</p></span>
+      <span class="go">Open</span>
+    </a>
+    <a class="card" href="civil-engineering-products.html">
+      <span class="count">3</span>
+      <span class="body"><h2>Civil Engineering</h2><p>Adds Wolfram System Modeler, so three cards across.</p></span>
+      <span class="go">Open</span>
+    </a>
+    <a class="card" href="math-education-products.html">
+      <span class="count">5</span>
+      <span class="body"><h2>Undergraduate Math Education</h2><p>Adds Quezzio, Wolfram U and the eTextbook Series. Three cards with the two learning offers as rows underneath.</p></span>
+      <span class="go">Open</span>
+    </a>
+  </div>
+
+  <div class="foot">
+    <p>Each is a full working page, so you can scroll and resize it. Everything below Features has
+    been removed to keep the files light.</p>
+    <p>All description copy is existing Wolfram copy, used verbatim.
+    <a href="product-copy-sources.md">Sources for every line</a>.
+    The six product marks are in <a href="product-icons/">product-icons</a>.</p>
+  </div>
+</div>
+</body>
+</html>
