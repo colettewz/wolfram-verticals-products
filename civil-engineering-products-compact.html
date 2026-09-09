@@ -668,6 +668,13 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
 .ws-compact h3 a:hover { color: var(--purple-light-accessible); }
 .ws-compact h3 a:focus-visible, .ws-compact .ws-link:focus-visible {
   outline: 2px solid var(--purple-light-accessible); outline-offset: 3px; border-radius: 2px; }
+/* Touch targets: the inline links stand 24px; they gain 44px through an invisible hit area, the
+   way the sub-nav pills do. The link's own ::after is its chevron, so ::before carries it. */
+@media (max-width: 1059px), (pointer: coarse) {
+  .ws-compact h3 a, .ws-compact .ws-link { position: relative; }
+  .ws-compact h3 a::after, .ws-compact .ws-link::before { content: ''; position: absolute;
+    left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
+}
 /* Learn more. In the tile it sits under the text on the text column, pinned to the bottom so a
    row of tiles shares one baseline; in the wider row it sits at the right. */
 .ws-compact .ws-product { flex-wrap: wrap; align-content: space-between; }
