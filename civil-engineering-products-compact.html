@@ -686,13 +686,13 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
 #products.ws-compact > .wrap { position: relative; z-index: 1; }
 
 /* --- Review toggle. Remove when a treatment is chosen. --- */
-/* Without Learn more (B): the title is the link, white with the site's trailing chevron in the
-   same colour; the whole title turns link-coloured on hover, and hovering the tile does too. */
+/* Without Learn more (B): the title is the link, in the link colour with the site's trailing
+   chevron, as the page's own heading links are (.res-items h3). No colour change on hover:
+   the tile's lift is the hover, as on the page's cards. */
 .ws-v-b .ws-product .ws-link, .ws-v-b .ws-product-row .ws-link { display: none; }
-.ws-v-b h3 a { pointer-events: auto; }
+.ws-v-b h3 a { pointer-events: auto; color: var(--purple-light-accessible); }
 .ws-v-b h3 a::after { content: "\00a0\00bb"; }
-.ws-v-b h3 a:hover, .ws-v-b .ws-product:hover h3 a, .ws-v-b .ws-product-row:hover h3 a {
-  color: var(--purple-light-accessible); text-decoration: none; }
+.ws-v-b h3 a:hover { color: var(--purple-light-accessible); text-decoration: none; }
 #ws-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 9500; display: flex; align-items: center;
   gap: 4px; padding: 6px 6px 6px 12px; border-radius: 999px; background: #1a1a1a; color: #ddd;
   border: 1px solid #444; box-shadow: 0 6px 24px rgba(0,0,0,.5); font: 600 13px/1 'Source Sans Pro', sans-serif; }
