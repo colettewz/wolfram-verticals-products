@@ -639,72 +639,85 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
   .ws-compact .ws-product-row { flex-wrap: nowrap; padding: var(--s-4) var(--s-6); }
   .ws-compact .ws-row-main { flex-basis: auto; flex-direction: row; align-items: center; }
   .ws-compact .ws-product-row .ws-mark { align-self: center; }
-  .ws-compact .ws-product-row .ws-link { padding: 0 0 0 var(--s-4); margin: 0; align-self: center; }
-  .ws-compact .ws-product-row .ws-link-text { position: absolute; width: 1px; height: 1px;
-    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .ws-compact .ws-product-row .ws-link::after { content: "\00bb"; }
+  .ws-compact .ws-product-row .ws-link { margin: 0; align-self: center; }
 }
 
-/* --- Review toggle: three tile treatments, one page. Remove when a treatment is chosen. --- */
-/* B: mark and title share a top line; no chevron. Rows follow. */
-.ws-v-b .ws-product, .ws-v-b .ws-row-main { align-items: flex-start; }
-.ws-v-b .ws-product .ws-mark, .ws-v-b .ws-product-row .ws-mark { align-self: flex-start; margin-top: -2px; }
-.ws-v-b .ws-product .ws-link, .ws-v-b .ws-product-row .ws-link { display: none; }
-/* C: name only, both tiers. */
-.ws-v-c .ws-product p, .ws-v-c .ws-product .ws-link,
-.ws-v-c .ws-product-row p, .ws-v-c .ws-product-row .ws-link { display: none; }
-.ws-v-c .ws-product h3, .ws-v-c .ws-product-row h3 { margin: 0; }
-.ws-v-c .ws-product { padding: var(--s-5) var(--s-6); }
-.ws-v-c .ws-product-row { padding: var(--s-4) var(--s-6); }
-.ws-v-c .ws-product-row .ws-mark { height: 24px; width: 24px; flex-basis: 24px; }
-/* D: hairline grid. No card fills; one bordered table of cells, the way Vercel and DeepMind
+/* Rows share the tile tint, so both tiers carry the same weight of colour. */
+.ws-compact .ws-product-row { background: color-mix(in srgb, var(--primary) 14%, var(--surface-strong));
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--divider)); }
+.ws-compact .ws-product-row:hover { background: color-mix(in srgb, var(--primary) 22%, var(--surface-strong));
+  border-color: var(--purple-light-accessible); }
+/* One link treatment for both tiers: the chevron alone, label kept for screen readers. */
+.ws-compact .ws-product-row .ws-link { padding: 0 0 0 var(--s-4); font-size: var(--fs-5); line-height: 1; }
+.ws-compact .ws-product-row .ws-link-text { position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ws-compact .ws-product-row .ws-link::after { content: "\00bb"; }
+
+/* --- Review toggle: five treatments, one page. Remove when a treatment is chosen. --- */
+/* B: "Learn more »" on every item, tiles and rows alike. */
+.ws-v-b .ws-product .ws-link, .ws-v-b .ws-product-row .ws-link { font-size: var(--fs-2);
+  line-height: 1.5; white-space: nowrap; }
+.ws-v-b .ws-product .ws-link-text, .ws-v-b .ws-product-row .ws-link-text { position: static;
+  width: auto; height: auto; overflow: visible; clip: auto; }
+.ws-v-b .ws-product .ws-link::after, .ws-v-b .ws-product-row .ws-link::after { content: "\00a0\00bb"; }
+/* C: mark and title share a top line; no link. Rows follow. */
+.ws-v-c .ws-product, .ws-v-c .ws-row-main { align-items: flex-start; }
+.ws-v-c .ws-product .ws-mark, .ws-v-c .ws-product-row .ws-mark { align-self: flex-start; margin-top: -2px; }
+.ws-v-c .ws-product .ws-link, .ws-v-c .ws-product-row .ws-link { display: none; }
+/* D: name only, both tiers. */
+.ws-v-d .ws-product p, .ws-v-d .ws-product .ws-link,
+.ws-v-d .ws-product-row p, .ws-v-d .ws-product-row .ws-link { display: none; }
+.ws-v-d .ws-product h3, .ws-v-d .ws-product-row h3 { margin: 0; }
+.ws-v-d .ws-product { padding: var(--s-5) var(--s-6); }
+.ws-v-d .ws-product-row { padding: var(--s-4) var(--s-6); }
+.ws-v-d .ws-product-row .ws-mark { height: 24px; width: 24px; flex-basis: 24px; }
+/* E: hairline grid. No card fills; one bordered table of cells, the way Vercel and DeepMind
    list products. The mark sits in a tinted chip; the cell fills on hover and the title grows
    its trailing chevron. Products and learning share one grid, learning cells lighter. */
-.ws-v-d .ws-products, .ws-v-d .ws-product-rows { display: grid; gap: 0; margin: 0;
+.ws-v-e .ws-products, .ws-v-e .ws-product-rows { display: grid; gap: 0; margin: 0;
   grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: hidden;
   border: 1px solid var(--divider); border-radius: var(--radius) var(--radius) 0 0; }
-.ws-v-d .ws-products:has(> :last-child:nth-child(2)),
-.ws-v-d .ws-products:has(> :last-child:nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.ws-v-d .ws-products:last-child { border-radius: var(--radius); }
-.ws-v-d .ws-product-rows { grid-template-columns: repeat(2, minmax(0, 1fr));
+.ws-v-e .ws-products:has(> :last-child:nth-child(2)),
+.ws-v-e .ws-products:has(> :last-child:nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ws-v-e .ws-products:last-child { border-radius: var(--radius); }
+.ws-v-e .ws-product-rows { grid-template-columns: repeat(2, minmax(0, 1fr));
   border-top: 0; border-radius: 0 0 var(--radius) var(--radius); }
-.ws-v-d .ws-product-rows:has(> :last-child:nth-child(1)) { grid-template-columns: 1fr; }
-.ws-v-d .ws-products > *, .ws-v-d .ws-product-rows > * { flex: none; }
-.ws-v-d .ws-product, .ws-v-d .ws-product-row { background: none; border: 0; border-radius: 0;
+.ws-v-e .ws-product-rows:has(> :last-child:nth-child(1)) { grid-template-columns: 1fr; }
+.ws-v-e .ws-products > *, .ws-v-e .ws-product-rows > * { flex: none; }
+.ws-v-e .ws-product, .ws-v-e .ws-product-row { background: none; border: 0; border-radius: 0;
   box-shadow: none; outline: 1px solid var(--divider); outline-offset: -1px;
   transform: none; transition: background-color .2s ease; }
-.ws-v-d .ws-product { flex-direction: column; align-items: flex-start; gap: var(--s-4);
+.ws-v-e .ws-product { flex-direction: column; align-items: flex-start; gap: var(--s-4);
   padding: var(--s-6); }
-.ws-v-d .ws-product-row { padding: var(--s-5) var(--s-6);
-  background: color-mix(in srgb, var(--surface-strong) 45%, transparent); }
-.ws-v-d .ws-product:hover, .ws-v-d .ws-product-row:hover { transform: none; box-shadow: none;
+.ws-v-e .ws-product-row { padding: var(--s-5) var(--s-6); }
+.ws-v-e .ws-product:hover, .ws-v-e .ws-product-row:hover { transform: none; box-shadow: none;
   background: var(--surface-strong); outline-color: var(--divider); }
-.ws-v-d .ws-product .ws-mark, .ws-v-d .ws-product-row .ws-mark { height: 44px; width: 44px;
+.ws-v-e .ws-product .ws-mark, .ws-v-e .ws-product-row .ws-mark { height: 44px; width: 44px;
   flex-basis: 44px; padding: 10px; margin: 0; border-radius: 10px; align-self: center;
   background: color-mix(in srgb, var(--primary) 18%, transparent);
   transition: background-color .2s ease, color .2s ease; }
-.ws-v-d .ws-product .ws-mark { align-self: flex-start; }
-.ws-v-d .ws-product:hover .ws-mark, .ws-v-d .ws-product-row:hover .ws-mark {
+.ws-v-e .ws-product .ws-mark { align-self: flex-start; }
+.ws-v-e .ws-product:hover .ws-mark, .ws-v-e .ws-product-row:hover .ws-mark {
   background: var(--primary); color: #fff; }
-.ws-v-d .ws-product h3 { margin: 0 0 var(--s-1); }
-.ws-v-d .ws-product h3::after, .ws-v-d .ws-product-row h3::after { content: "\00a0\00bb";
+.ws-v-e .ws-product h3 { margin: 0 0 var(--s-1); }
+.ws-v-e .ws-product h3::after, .ws-v-e .ws-product-row h3::after { content: "\00a0\00bb";
   color: var(--purple-light-accessible); opacity: 0; transition: opacity .2s ease; }
-.ws-v-d .ws-product:hover h3::after, .ws-v-d .ws-product-row:hover h3::after { opacity: 1; }
-.ws-v-d .ws-product .ws-link, .ws-v-d .ws-product-row .ws-link { display: none; }
-.ws-v-d .ws-product:focus-visible, .ws-v-d .ws-product-row:focus-visible {
+.ws-v-e .ws-product:hover h3::after, .ws-v-e .ws-product-row:hover h3::after { opacity: 1; }
+.ws-v-e .ws-product .ws-link, .ws-v-e .ws-product-row .ws-link { display: none; }
+.ws-v-e .ws-product:focus-visible, .ws-v-e .ws-product-row:focus-visible {
   outline: 2px solid var(--purple-light-accessible); outline-offset: -2px; }
 @media (max-width: 900px) {
-  .ws-v-d .ws-products, .ws-v-d .ws-products:has(> :last-child:nth-child(4)) {
+  .ws-v-e .ws-products, .ws-v-e .ws-products:has(> :last-child:nth-child(4)) {
     grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .ws-v-d .ws-product-rows { grid-template-columns: 1fr; }
+  .ws-v-e .ws-product-rows { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .ws-v-d .ws-products, .ws-v-d .ws-products:has(> :last-child:nth-child(2)),
-  .ws-v-d .ws-products:has(> :last-child:nth-child(4)) { grid-template-columns: 1fr; }
-  .ws-v-d .ws-product { flex-direction: row; align-items: center; gap: var(--s-5); }
-  .ws-v-d .ws-product .ws-mark { align-self: center; }
-  .ws-v-d .ws-product-row { flex-wrap: nowrap; }
-  .ws-v-d .ws-row-main { flex-direction: row; align-items: center; }
+  .ws-v-e .ws-products, .ws-v-e .ws-products:has(> :last-child:nth-child(2)),
+  .ws-v-e .ws-products:has(> :last-child:nth-child(4)) { grid-template-columns: 1fr; }
+  .ws-v-e .ws-product { flex-direction: row; align-items: center; gap: var(--s-5); }
+  .ws-v-e .ws-product .ws-mark { align-self: center; }
+  .ws-v-e .ws-product-row { flex-wrap: nowrap; }
+  .ws-v-e .ws-row-main { flex-direction: row; align-items: center; }
 }
 #ws-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 9500; display: flex; align-items: center;
   gap: 4px; padding: 6px 6px 6px 12px; border-radius: 999px; background: #1a1a1a; color: #ddd;
@@ -758,7 +771,7 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
 </g>
 </g>
 </g></symbol></svg><section id="products" class="ws-compact"><div class="wrap"><header class="section-hdr reveal in-view"><h2>Wolfram Products for Undergraduate Math Education</h2></header><div class="ws-products"><a class="ws-product" href="https://www.wolfram.com/wolfram-one/?source=verticals-products"><svg class="ws-mark" viewBox="-0.49 -0.43 35.85 35.85" aria-hidden="true" focusable="false"><use href="#ws-mark-wone"/></svg><span class="ws-text"><h3>Wolfram|One</h3><p>The definitive Wolfram Language and notebook experience</p></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a><a class="ws-product" href="https://www.wolfram.com/artificial-intelligence/?source=verticals-products"><svg class="ws-mark" viewBox="-4.57 -3.46 68.34 68.34" aria-hidden="true" focusable="false"><use href="#ws-mark-ai"/></svg><span class="ws-text"><h3>AI Products</h3><p>Add computational knowledge and Wolfram capabilities to make your AI smarter.</p></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a><a class="ws-product" href="https://www.wolfram.com/quezzio/?source=verticals-products"><svg class="ws-mark" viewBox="-2.27 -9.99 59.72 59.72" aria-hidden="true" focusable="false"><use href="#ws-mark-quezzio"/></svg><span class="ws-text"><h3>Quezzio</h3><p>Flexible math &amp; science classroom question generation and auto-grading for practice and assessment.</p></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a></div><div class="ws-product-rows"><a class="ws-product-row" href="https://www.wolfram.com/wolfram-u/?source=verticals-products"><span class="ws-row-main"><svg class="ws-mark" viewBox="-4.04 -4.04 44.06 44.06" aria-hidden="true" focusable="false"><use href="#ws-mark-wu"/></svg><span class="ws-text"><h3>Wolfram U</h3><p>Courses in computing, science, life and more</p></span></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a><a class="ws-product-row" href="https://www.wolfram-media.com/series/etextbooks/"><span class="ws-row-main"><svg class="ws-mark" viewBox="-12.23 -6.72 85.01 85.01" aria-hidden="true" focusable="false"><use href="#ws-mark-etext"/></svg><span class="ws-text"><h3>Wolfram eTextbook Series</h3><p>Book collection covers computational topics, highly focused on real-world applications.</p></span></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a></div></div></section>
-<div id="ws-toggle" role="group" aria-label="Tile treatment"><span>Tiles</span><button type="button" data-v="a" aria-pressed="true">A<i> chevron</i></button><button type="button" data-v="b" aria-pressed="false">B<i> top-aligned</i></button><button type="button" data-v="c" aria-pressed="false">C<i> name only</i></button><button type="button" data-v="d" aria-pressed="false">D<i> grid</i></button></div><script>(function(){var t=document.getElementById("ws-toggle"),s=document.getElementById("products");t.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;s.classList.remove("ws-v-b","ws-v-c","ws-v-d");if(b.dataset.v!=="a")s.classList.add("ws-v-"+b.dataset.v);t.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});});})();</script>
+<div id="ws-toggle" role="group" aria-label="Tile treatment"><span>Tiles</span><button type="button" data-v="a" aria-pressed="true">A<i> chevron</i></button><button type="button" data-v="b" aria-pressed="false">B<i> learn more</i></button><button type="button" data-v="c" aria-pressed="false">C<i> top-aligned</i></button><button type="button" data-v="d" aria-pressed="false">D<i> name only</i></button><button type="button" data-v="e" aria-pressed="false">E<i> grid</i></button></div><script>(function(){var t=document.getElementById("ws-toggle"),s=document.getElementById("products");t.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;s.classList.remove("ws-v-b","ws-v-c","ws-v-d","ws-v-e");if(b.dataset.v!=="a")s.classList.add("ws-v-"+b.dataset.v);t.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});});})();</script>
 <script id="ws-products-js">
 /* The bar reveals once the hero scrolls out of view. This is the only script the section needs:
    its position, height and anchor offsets are all CSS. A scroll-driven CSS animation could
