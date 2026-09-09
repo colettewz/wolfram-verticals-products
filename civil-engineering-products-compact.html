@@ -654,18 +654,14 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
 .ws-compact .ws-product, .ws-compact .ws-product-row, .ws-compact .ws-row-main { align-items: flex-start; }
 .ws-compact .ws-product .ws-mark, .ws-compact .ws-product-row .ws-mark { align-self: flex-start;
   margin-top: 0; }
-/* The tile is a container, not a link: the title and Learn more are. So no lift on hover; the
-   links take the page's link colour states instead. */
-.ws-compact .ws-product:hover, .ws-compact .ws-product-row:hover { transform: none;
-  box-shadow: var(--shadow-1);
-  background: color-mix(in srgb, var(--primary) 14%, var(--surface-strong));
-  border-color: color-mix(in srgb, var(--primary) 55%, var(--divider)); }
-.ws-compact .ws-product:active, .ws-compact .ws-product-row:active { transform: none; }
-.ws-compact .ws-product::after, .ws-compact .ws-product-row::after { content: none; }
-.ws-compact h3 a { color: inherit; text-decoration: none; }
-.ws-compact h3 a:hover, .ws-compact .ws-link:hover { color: var(--purple-light-accessible);
-  text-decoration: none; }
-.ws-compact h3 a:hover { color: var(--purple-light-accessible); }
+/* The title and Learn more are the links; the tile keeps its lift so the box and its link
+   read as one thing, and hovering the tile lights the title. Title: white with the site's
+   trailing chevron in the link colour; the whole title turns link-coloured on hover. */
+.ws-compact h3 a { color: inherit; text-decoration: none; transition: color .2s ease; }
+.ws-compact h3 a::after { content: "\00a0\00bb"; color: var(--purple-light-accessible); }
+.ws-compact h3 a:hover, .ws-compact .ws-product:hover h3 a, .ws-compact .ws-product-row:hover h3 a {
+  color: var(--purple-light-accessible); text-decoration: none; }
+.ws-compact .ws-link:hover { text-decoration: none; }
 .ws-compact h3 a:focus-visible, .ws-compact .ws-link:focus-visible {
   outline: 2px solid var(--purple-light-accessible); outline-offset: 3px; border-radius: 2px; }
 /* Touch targets: the inline links stand 24px; they gain 44px through an invisible hit area, the
