@@ -644,6 +644,24 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
     overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .ws-compact .ws-product-row .ws-link::after { content: "\00bb"; }
 }
+
+/* --- Review toggle: three tile treatments, one page. Remove when a treatment is chosen. --- */
+/* B: mark and title share a top line; no chevron. */
+.ws-v-b .ws-product { align-items: flex-start; }
+.ws-v-b .ws-product .ws-mark { align-self: flex-start; margin-top: -2px; }
+.ws-v-b .ws-product .ws-link { display: none; }
+/* C: name only. */
+.ws-v-c .ws-product p, .ws-v-c .ws-product .ws-link { display: none; }
+.ws-v-c .ws-product h3 { margin: 0; }
+.ws-v-c .ws-product { padding: var(--s-5) var(--s-6); }
+#ws-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 9500; display: flex; align-items: center;
+  gap: 4px; padding: 6px 6px 6px 12px; border-radius: 999px; background: #1a1a1a; color: #ddd;
+  border: 1px solid #444; box-shadow: 0 6px 24px rgba(0,0,0,.5); font: 600 13px/1 'Source Sans Pro', sans-serif; }
+#ws-toggle span { margin-right: 6px; color: #999; }
+#ws-toggle button { font: inherit; color: #ccc; background: none; border: 1px solid transparent;
+  border-radius: 999px; padding: 7px 12px; cursor: pointer; }
+#ws-toggle button[aria-pressed="true"] { background: #fff; color: #111; }
+
 </style>
 <nav id="ws-subnav" aria-label="Page quick links"><div class="ws-subnav-inner"><div class="ws-subnav-label"><span>Undergraduate Math Education</span></div><div class="ws-subnav-links"><a href="#products">Products</a><a href="#stories">Customer stories</a><a href="https://www.wolfram.com/contact-us?source=verticals-subnav">Contact Us</a></div><div class="ws-subnav-ctas"><a class="ws-btn ws-btn-primary" href="https://www.wolfram.com/wolfram-one/?source=verticals-subnav">Wolfram|One</a><a class="ws-btn ws-btn-secondary" href="https://www.wolframconsulting.com/">Consulting</a></div></div></nav>
 <svg id="ws-marks" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="ws-mark-ai" viewBox="-4.57 -3.46 68.34 68.34"><g xmlns="http://www.w3.org/2000/svg" fill="none"><g>
@@ -686,6 +704,7 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
 </g>
 </g>
 </g></symbol></svg><section id="products" class="ws-compact"><div class="wrap"><header class="section-hdr reveal in-view"><h2>Wolfram Products for Undergraduate Math Education</h2></header><div class="ws-products"><a class="ws-product" href="https://www.wolfram.com/wolfram-one/?source=verticals-products"><svg class="ws-mark" viewBox="-0.49 -0.43 35.85 35.85" aria-hidden="true" focusable="false"><use href="#ws-mark-wone"/></svg><span class="ws-text"><h3>Wolfram|One</h3><p>The definitive Wolfram Language and notebook experience</p></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a><a class="ws-product" href="https://www.wolfram.com/artificial-intelligence/?source=verticals-products"><svg class="ws-mark" viewBox="-4.57 -3.46 68.34 68.34" aria-hidden="true" focusable="false"><use href="#ws-mark-ai"/></svg><span class="ws-text"><h3>AI Products</h3><p>Add computational knowledge and Wolfram capabilities to make your AI smarter.</p></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a><a class="ws-product" href="https://www.wolfram.com/quezzio/?source=verticals-products"><svg class="ws-mark" viewBox="-2.27 -9.99 59.72 59.72" aria-hidden="true" focusable="false"><use href="#ws-mark-quezzio"/></svg><span class="ws-text"><h3>Quezzio</h3><p>Flexible math &amp; science classroom question generation and auto-grading for practice and assessment.</p></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a></div><div class="ws-product-rows"><a class="ws-product-row" href="https://www.wolfram.com/wolfram-u/?source=verticals-products"><span class="ws-row-main"><svg class="ws-mark" viewBox="-4.04 -4.04 44.06 44.06" aria-hidden="true" focusable="false"><use href="#ws-mark-wu"/></svg><span class="ws-text"><h3>Wolfram U</h3><p>Courses in computing, science, life and more</p></span></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a><a class="ws-product-row" href="https://www.wolfram-media.com/series/etextbooks/"><span class="ws-row-main"><svg class="ws-mark" viewBox="-12.23 -6.72 85.01 85.01" aria-hidden="true" focusable="false"><use href="#ws-mark-etext"/></svg><span class="ws-text"><h3>Wolfram eTextbook Series</h3><p>Book collection covers computational topics, highly focused on real-world applications.</p></span></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a></div></div></section>
+<div id="ws-toggle" role="group" aria-label="Tile treatment"><span>Tiles</span><button type="button" data-v="a" aria-pressed="true">A chevron</button><button type="button" data-v="b" aria-pressed="false">B top-aligned</button><button type="button" data-v="c" aria-pressed="false">C name only</button></div><script>(function(){var t=document.getElementById("ws-toggle"),s=document.getElementById("products");t.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;s.classList.remove("ws-v-b","ws-v-c");if(b.dataset.v!=="a")s.classList.add("ws-v-"+b.dataset.v);t.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});});})();</script>
 <script id="ws-products-js">
 /* The bar reveals once the hero scrolls out of view. This is the only script the section needs:
    its position, height and anchor offsets are all CSS. A scroll-driven CSS animation could
