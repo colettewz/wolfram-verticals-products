@@ -706,6 +706,22 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
 .ws-v-e .ws-product .ws-link, .ws-v-e .ws-product-row .ws-link { display: none; }
 .ws-v-e .ws-product:focus-visible, .ws-v-e .ws-product-row:focus-visible {
   outline: 2px solid var(--purple-light-accessible); outline-offset: -2px; }
+/* F: stacked tiles. The first version's order (mark, title, tagline, Learn more) at a tighter
+   scale: smaller mark, smaller type, less padding. Rows stay horizontal with the same link. */
+.ws-v-f .ws-product { flex-direction: column; align-items: flex-start; gap: 0;
+  padding: var(--s-5) var(--s-6); }
+.ws-v-f .ws-product .ws-mark { height: 32px; width: 32px; flex-basis: 32px;
+  align-self: flex-start; margin: 0 0 var(--s-3); }
+.ws-v-f .ws-product h3 { margin: 0 0 var(--s-1); font-size: var(--fs-4); }
+.ws-v-f .ws-product p { font-size: var(--fs-1); }
+.ws-v-f .ws-product .ws-link, .ws-v-f .ws-product-row .ws-link { font-size: var(--fs-2);
+  line-height: 1.5; white-space: nowrap; }
+.ws-v-f .ws-product .ws-link { display: block; margin: auto 0 0; padding: var(--s-3) 0 0;
+  align-self: flex-start; }
+.ws-v-f .ws-product .ws-link-text, .ws-v-f .ws-product-row .ws-link-text { position: static;
+  width: auto; height: auto; overflow: visible; clip: auto; }
+.ws-v-f .ws-product .ws-link::after, .ws-v-f .ws-product-row .ws-link::after { content: "\00a0\00bb"; }
+
 @media (max-width: 900px) {
   .ws-v-e .ws-products, .ws-v-e .ws-products:has(> :last-child:nth-child(4)) {
     grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -771,7 +787,7 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
 </g>
 </g>
 </g></symbol></svg><section id="products" class="ws-compact"><div class="wrap"><header class="section-hdr reveal in-view"><h2>Wolfram Products for Undergraduate Math Education</h2></header><div class="ws-products"><a class="ws-product" href="https://www.wolfram.com/wolfram-one/?source=verticals-products"><svg class="ws-mark" viewBox="-0.49 -0.43 35.85 35.85" aria-hidden="true" focusable="false"><use href="#ws-mark-wone"/></svg><span class="ws-text"><h3>Wolfram|One</h3><p>The definitive Wolfram Language and notebook experience</p></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a><a class="ws-product" href="https://www.wolfram.com/artificial-intelligence/?source=verticals-products"><svg class="ws-mark" viewBox="-4.57 -3.46 68.34 68.34" aria-hidden="true" focusable="false"><use href="#ws-mark-ai"/></svg><span class="ws-text"><h3>AI Products</h3><p>Add computational knowledge and Wolfram capabilities to make your AI smarter.</p></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a><a class="ws-product" href="https://www.wolfram.com/quezzio/?source=verticals-products"><svg class="ws-mark" viewBox="-2.27 -9.99 59.72 59.72" aria-hidden="true" focusable="false"><use href="#ws-mark-quezzio"/></svg><span class="ws-text"><h3>Quezzio</h3><p>Flexible math &amp; science classroom question generation and auto-grading for practice and assessment.</p></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a></div><div class="ws-product-rows"><a class="ws-product-row" href="https://www.wolfram.com/wolfram-u/?source=verticals-products"><span class="ws-row-main"><svg class="ws-mark" viewBox="-4.04 -4.04 44.06 44.06" aria-hidden="true" focusable="false"><use href="#ws-mark-wu"/></svg><span class="ws-text"><h3>Wolfram U</h3><p>Courses in computing, science, life and more</p></span></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a><a class="ws-product-row" href="https://www.wolfram-media.com/series/etextbooks/"><span class="ws-row-main"><svg class="ws-mark" viewBox="-12.23 -6.72 85.01 85.01" aria-hidden="true" focusable="false"><use href="#ws-mark-etext"/></svg><span class="ws-text"><h3>Wolfram eTextbook Series</h3><p>Book collection covers computational topics, highly focused on real-world applications.</p></span></span><span class="ws-link"><span class="ws-link-text">Learn more</span></span></a></div></div></section>
-<div id="ws-toggle" role="group" aria-label="Tile treatment"><span>Tiles</span><button type="button" data-v="a" aria-pressed="true">A<i> chevron</i></button><button type="button" data-v="b" aria-pressed="false">B<i> learn more</i></button><button type="button" data-v="c" aria-pressed="false">C<i> top-aligned</i></button><button type="button" data-v="d" aria-pressed="false">D<i> name only</i></button><button type="button" data-v="e" aria-pressed="false">E<i> grid</i></button></div><script>(function(){var t=document.getElementById("ws-toggle"),s=document.getElementById("products");t.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;s.classList.remove("ws-v-b","ws-v-c","ws-v-d","ws-v-e");if(b.dataset.v!=="a")s.classList.add("ws-v-"+b.dataset.v);t.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});});})();</script>
+<div id="ws-toggle" role="group" aria-label="Tile treatment"><span>Tiles</span><button type="button" data-v="a" aria-pressed="true">A<i> chevron</i></button><button type="button" data-v="b" aria-pressed="false">B<i> learn more</i></button><button type="button" data-v="c" aria-pressed="false">C<i> top-aligned</i></button><button type="button" data-v="d" aria-pressed="false">D<i> name only</i></button><button type="button" data-v="e" aria-pressed="false">E<i> grid</i></button><button type="button" data-v="f" aria-pressed="false">F<i> stacked</i></button></div><script>(function(){var t=document.getElementById("ws-toggle"),s=document.getElementById("products");t.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;s.classList.remove("ws-v-b","ws-v-c","ws-v-d","ws-v-e","ws-v-f");if(b.dataset.v!=="a")s.classList.add("ws-v-"+b.dataset.v);t.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});});})();</script>
 <script id="ws-products-js">
 /* The bar reveals once the hero scrolls out of view. This is the only script the section needs:
    its position, height and anchor offsets are all CSS. A scroll-driven CSS animation could
