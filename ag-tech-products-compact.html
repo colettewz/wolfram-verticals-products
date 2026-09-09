@@ -633,9 +633,12 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
 
 @media (max-width: 640px) {
   .ws-compact .ws-product { padding: var(--s-5) var(--s-6); }
-  .ws-compact .ws-product-row { flex-wrap: nowrap; }
-  .ws-compact .ws-row-main { flex-basis: auto; flex-direction: row; align-items: center; }
-  .ws-compact .ws-product-row .ws-mark { align-self: center; }
+  /* Rows take the tile's link placement: under the text, on the text column. */
+  .ws-compact .ws-product-row { flex-wrap: wrap; align-content: space-between; }
+  .ws-compact .ws-row-main { flex: 1 1 0; flex-direction: row; align-items: flex-start; }
+  .ws-compact .ws-product-row .ws-mark { align-self: flex-start; }
+  .ws-compact .ws-product-row .ws-link { flex: 0 0 100%; margin: var(--s-3) 0 0;
+    padding: 0 0 0 calc(44px + var(--s-5)); align-self: auto; }
 }
 
 /* Rows share the tile tint, so both tiers carry the same weight of colour. */
