@@ -674,6 +674,142 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
     radial-gradient(38% 70% at 100% 40%, rgba(122, 98, 212, .22), transparent 70%); }
 #products.ws-compact > .wrap { position: relative; z-index: 1; }
 
+
+/* ==========================================================================
+   Review options (2026-09-10, Shadi + Elizabeth: still too tall, shorter text
+   should help). Six tile treatments on one page, plus a copy-length switch, so
+   the two questions can be judged separately. Remove all of this when one wins.
+   ========================================================================== */
+
+/* The chip is a box around the mark. Invisible in A; each option gives it its frame. */
+.ws-compact .ws-chip { display: flex; align-items: center; justify-content: center;
+  flex: 0 0 auto; align-self: flex-start; transition: border-color .2s ease, background-color .2s ease; }
+.ws-compact .ws-chip .ws-mark { align-self: center; margin-top: 0; }
+
+/* Copy length. The short line is a clause-level trim of the official sentence. */
+.ws-compact .ws-copy-short { display: none; }
+.ws-compact.ws-short .ws-copy-full { display: none; }
+.ws-compact.ws-short .ws-copy-short { display: block; }
+
+/* --- B - Chip. The DeepMind pattern: a faded square framing the mark, name and line
+   beside it. The frame gives the mark presence without the tile growing. ------------- */
+.ws-compact.ws-l-b .ws-product, .ws-compact.ws-l-b .ws-product-row {
+  align-items: center; gap: var(--s-5); padding: var(--s-4) var(--s-6); }
+.ws-compact.ws-l-b .ws-chip { width: 48px; height: 48px; border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--purple-light-accessible) 26%, transparent);
+  align-self: center; }
+.ws-compact.ws-l-b .ws-chip .ws-mark { height: 28px; width: 28px; flex-basis: 28px; }
+.ws-compact.ws-l-b .ws-product:hover .ws-chip, .ws-compact.ws-l-b .ws-product-row:hover .ws-chip {
+  border-color: var(--purple-light-accessible); }
+
+/* --- C - Grid. No fills: one hairline frame around both tiers, cells divided by rules.
+   Vercel and DeepMind list products this way; it reads as a table of contents. -------- */
+.ws-compact.ws-l-c .ws-products, .ws-compact.ws-l-c .ws-product-rows {
+  display: grid; gap: 0; margin: 0; grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--divider); overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0; }
+.ws-compact.ws-l-c .ws-products:has(> :last-child:nth-child(2)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ws-compact.ws-l-c .ws-products:last-child { border-radius: var(--radius); }
+.ws-compact.ws-l-c .ws-product-rows { grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 0; border-radius: 0 0 var(--radius) var(--radius); }
+.ws-compact.ws-l-c .ws-product-rows:has(> :last-child:nth-child(1)) { grid-template-columns: 1fr; }
+.ws-compact.ws-l-c .ws-product, .ws-compact.ws-l-c .ws-product-row {
+  flex: none; align-items: center; gap: var(--s-5); padding: var(--s-5) var(--s-6);
+  background: none; border: 0; border-radius: 0; box-shadow: none; transform: none;
+  outline: 1px solid var(--divider); outline-offset: -1px;
+  transition: background-color .2s ease; }
+.ws-compact.ws-l-c .ws-product:hover, .ws-compact.ws-l-c .ws-product-row:hover {
+  transform: none; box-shadow: none; background: var(--surface-strong); }
+.ws-compact.ws-l-c .ws-chip { width: 48px; height: 48px; border-radius: 12px; align-self: center;
+  border: 1px solid color-mix(in srgb, var(--purple-light-accessible) 26%, transparent); }
+.ws-compact.ws-l-c .ws-chip .ws-mark { height: 24px; width: 24px; flex-basis: 24px; }
+
+/* --- D - Name only. Chip and name, no line at all. The shortest tile that still
+   carries a mark; the vertical page has already said what these products are for. ----- */
+.ws-compact.ws-l-d .ws-product p, .ws-compact.ws-l-d .ws-product-row p { display: none; }
+.ws-compact.ws-l-d .ws-product, .ws-compact.ws-l-d .ws-product-row {
+  align-items: center; gap: var(--s-5); padding: var(--s-5) var(--s-6); }
+.ws-compact.ws-l-d .ws-chip { width: 48px; height: 48px; border-radius: 12px; align-self: center;
+  border: 1px solid color-mix(in srgb, var(--purple-light-accessible) 26%, transparent); }
+.ws-compact.ws-l-d .ws-chip .ws-mark { height: 26px; width: 26px; flex-basis: 26px; }
+
+/* --- E - One line. Mark, name and line share a single row; the line truncates rather
+   than wrapping, so every product costs exactly one row. ----------------------------- */
+.ws-compact.ws-l-e .ws-products, .ws-compact.ws-l-e .ws-product-rows {
+  display: flex; flex-direction: column; gap: 0; margin: 0;
+  border: 1px solid var(--divider); overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0; }
+.ws-compact.ws-l-e .ws-products:last-child { border-radius: var(--radius); }
+.ws-compact.ws-l-e .ws-product-rows { border-top: 0; border-radius: 0 0 var(--radius) var(--radius); }
+.ws-compact.ws-l-e .ws-product, .ws-compact.ws-l-e .ws-product-row {
+  flex: none; flex-wrap: nowrap; align-items: center; gap: var(--s-5);
+  padding: var(--s-3) var(--s-6);
+  background: none; border: 0; border-radius: 0; box-shadow: none; transform: none;
+  outline: 1px solid var(--divider); outline-offset: -1px;
+  transition: background-color .2s ease; }
+.ws-compact.ws-l-e .ws-product:hover, .ws-compact.ws-l-e .ws-product-row:hover {
+  transform: none; box-shadow: none; background: var(--surface-strong); }
+.ws-compact.ws-l-e .ws-text { display: flex; align-items: baseline; gap: var(--s-5);
+  flex: 1 1 auto; min-width: 0; }
+.ws-compact.ws-l-e h3 { flex: 0 0 auto; margin: 0; }
+.ws-compact.ws-l-e p { margin: 0; min-width: 0; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis; }
+.ws-compact.ws-l-e .ws-chip { width: 26px; height: 26px; align-self: center; }
+.ws-compact.ws-l-e .ws-chip .ws-mark { height: 26px; width: 26px; flex-basis: 26px; }
+
+/* --- F - Pills. Every product in one wrapping band: chip and name only, no line and no
+   card. The shortest the section can be while still naming and marking each product. --- */
+/* Both tiers flow in one band: the two containers step out of the box model so all the
+   products wrap together rather than breaking at the tier. */
+.ws-compact.ws-l-f > .wrap { display: flex; flex-wrap: wrap; gap: var(--s-4); }
+.ws-compact.ws-l-f .section-hdr { flex: 0 0 100%; }
+.ws-compact.ws-l-f .ws-products, .ws-compact.ws-l-f .ws-product-rows { display: contents; }
+.ws-compact.ws-l-f .ws-product, .ws-compact.ws-l-f .ws-product-row {
+  flex: 0 0 auto; width: auto; align-items: center; gap: var(--s-4);
+  padding: var(--s-3) var(--s-5) var(--s-3) var(--s-3); border-radius: var(--radius-round, 50px); }
+.ws-compact.ws-l-f .ws-product p, .ws-compact.ws-l-f .ws-product-row p { display: none; }
+.ws-compact.ws-l-f .ws-text { flex: 0 0 auto; }
+.ws-compact.ws-l-f h3 { font-size: var(--fs-3); }
+.ws-compact.ws-l-f .ws-chip { width: 34px; height: 34px; align-self: center; }
+.ws-compact.ws-l-f .ws-chip .ws-mark { height: 30px; width: 30px; flex-basis: 30px; }
+
+/* Below the page's own tablet break the multi-column options fall to one column. */
+@media (max-width: 900px) {
+  .ws-compact.ws-l-c .ws-products, .ws-compact.ws-l-c .ws-product-rows,
+  .ws-compact.ws-l-c .ws-products:has(> :last-child:nth-child(2)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .ws-compact.ws-l-c .ws-products, .ws-compact.ws-l-c .ws-product-rows,
+  .ws-compact.ws-l-c .ws-products:has(> :last-child:nth-child(2)) { grid-template-columns: 1fr; }
+  .ws-compact.ws-l-e .ws-text { flex-direction: column; align-items: flex-start; gap: 0; }
+  .ws-compact.ws-l-e p { white-space: normal; }
+  .ws-compact.ws-l-f .ws-product, .ws-compact.ws-l-f .ws-product-row { width: calc(50% - var(--s-5)); }
+}
+
+/* Frame. The section carries 72px top and bottom and a 32px gap under the heading - 217px
+   before a single tile is drawn. "Tight" drops that to the 40px #stories already uses
+   directly above this section, so the value is the page's own, not a new one. */
+.ws-compact.ws-tight { padding-top: 40px; padding-bottom: 40px; }
+.ws-compact.ws-tight .section-hdr { margin-bottom: var(--s-6); }
+
+/* Review toggle. Three groups: which tile, and how long the copy runs. */
+#ws-toggle { position: fixed; right: 16px; bottom: 16px; z-index: 9500; display: flex;
+  align-items: center; gap: 3px; padding: 6px 10px 6px 12px; border-radius: 999px;
+  background: #1a1a1a; color: #ddd; border: 1px solid #444;
+  box-shadow: 0 6px 24px rgba(0,0,0,.5); font: 600 12.5px/1 'Source Sans Pro', sans-serif; }
+#ws-toggle .ws-tg-label { margin: 0 5px 0 0; color: #888; text-transform: uppercase;
+  letter-spacing: .06em; font-size: 10.5px; }
+#ws-toggle button { font: inherit; color: #ccc; background: none; border: 0;
+  border-radius: 999px; padding: 7px 10px; cursor: pointer; white-space: nowrap; }
+#ws-toggle button:hover { color: #fff; }
+#ws-toggle button[aria-pressed="true"] { background: #fff; color: #111; }
+#ws-toggle .ws-tg-sep { width: 1px; height: 20px; background: #444; margin: 0 8px; }
+#ws-toggle .ws-tg-h { margin-left: 8px; padding: 5px 9px; border-radius: 6px;
+  background: #262626; color: #9ad; font-variant-numeric: tabular-nums; }
+@media (max-width: 1100px) {
+  #ws-toggle { right: 10px; bottom: 10px; left: 10px; flex-wrap: wrap; justify-content: center; }
+  #ws-toggle .ws-tg-i { display: none; }
+}
 </style>
 <nav id="ws-subnav" aria-label="Page quick links"><div class="ws-subnav-inner"><div class="ws-subnav-label"><span>Undergraduate Math Education</span></div><div class="ws-subnav-links"><a href="#products">Products</a><a href="#stories">Customer stories</a><a href="https://www.wolfram.com/contact-us?source=verticals-subnav">Contact Us</a></div><div class="ws-subnav-ctas"><a class="ws-btn ws-btn-primary" href="https://www.wolfram.com/wolfram-one/?source=verticals-subnav">Wolfram|One</a><a class="ws-btn ws-btn-secondary" href="https://www.wolframconsulting.com/">Consulting</a></div></div></nav>
 <svg id="ws-marks" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><symbol id="ws-mark-ai"><g xmlns="http://www.w3.org/2000/svg" fill="none"><g>
@@ -715,7 +851,8 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
 <path d="M31.7883 5.54828C31.4083 5.22828 30.9783 4.89828 30.5183 4.57828C27.1583 2.26828 22.7083 0.988281 17.9883 0.988281C13.2683 0.988281 8.81828 2.25828 5.45828 4.57828C5.01828 4.87828 4.59828 5.19828 4.19828 5.53828L3.98828 5.71828V25.0783L4.13828 25.3183C7.73828 31.0283 13.9383 33.4283 17.2683 34.7183L17.9883 34.9983L18.6983 34.7183C22.0283 33.4283 28.2283 31.0283 31.8383 25.3183L31.9883 25.0783V5.72828L31.7783 5.54828H31.7883ZM30.9983 6.36828V24.7583L30.9383 24.8483C27.5483 30.2683 21.6583 32.5683 18.4983 33.8083C18.4983 33.8083 18.4883 33.8083 18.4783 33.8083C18.3083 33.8783 18.1483 33.9383 17.9983 33.9983C17.8483 33.9383 17.6883 33.8783 17.5183 33.8083H17.4983C14.3283 32.5683 8.43828 30.2683 5.05828 24.8483L4.99828 24.7583V6.30828C5.36828 5.99828 5.75828 5.69828 6.16828 5.40828C9.32828 3.20828 13.5283 1.99828 17.9883 1.99828C22.4483 1.99828 26.6483 3.20828 29.8083 5.40828C30.2283 5.69828 30.6283 5.99828 30.9883 6.31828V6.36828H30.9983Z" fill="currentColor"/>
 </g>
 </g>
-</g></symbol></svg><section id="products" class="ws-compact"><div class="wrap"><header class="section-hdr reveal in-view"><h2>Wolfram Products for Undergraduate Math Education</h2></header><div class="ws-products"><div class="ws-product"><svg class="ws-mark" viewBox="-0.43 2.79 35.71 35.71" aria-hidden="true" focusable="false"><use href="#ws-mark-wone"/></svg><span class="ws-text"><h3><a href="https://www.wolfram.com/wolfram-one/?source=verticals-products">Wolfram|One</a></h3><p>The definitive Wolfram Language and notebook experience</p></span></div><div class="ws-product"><svg class="ws-mark" viewBox="-4.61 4.51 68.67 68.67" aria-hidden="true" focusable="false"><use href="#ws-mark-ai"/></svg><span class="ws-text"><h3><a href="https://www.wolfram.com/artificial-intelligence/?source=verticals-products">AI Products</a></h3><p>Add computational knowledge and Wolfram capabilities to make your AI smarter.</p></span></div><div class="ws-product"><svg class="ws-mark" viewBox="-2.37 -2.04 59.92 59.92" aria-hidden="true" focusable="false"><use href="#ws-mark-quezzio"/></svg><span class="ws-text"><h3><a href="https://www.wolfram.com/quezzio/?source=verticals-products">Quezzio</a></h3><p>Flexible math &amp; science classroom question generation and auto-grading for practice and assessment.</p></span></div></div><div class="ws-product-rows"><div class="ws-product-row"><span class="ws-row-main"><svg class="ws-mark" viewBox="-4.07 -3.02 44.12 44.12" aria-hidden="true" focusable="false"><use href="#ws-mark-wu"/></svg><span class="ws-text"><h3><a href="https://www.wolfram.com/wolfram-u/?source=verticals-products">Wolfram U</a></h3><p>Courses in computing, science, life and more</p></span></span></div><div class="ws-product-row"><span class="ws-row-main"><svg class="ws-mark" viewBox="-11.97 -8.65 84.51 84.51" aria-hidden="true" focusable="false"><use href="#ws-mark-etext"/></svg><span class="ws-text"><h3><a href="https://www.wolfram-media.com/series/etextbooks/">Wolfram eTextbook Series</a></h3><p>Book collection covers computational topics, highly focused on real-world applications.</p></span></span></div></div></div></section>
+</g></symbol></svg><section id="products" class="ws-compact"><div class="wrap"><header class="section-hdr reveal in-view"><h2>Wolfram Products for Undergraduate Math Education</h2></header><div class="ws-products"><div class="ws-product"><span class="ws-chip"><svg class="ws-mark" viewBox="-0.43 2.79 35.71 35.71" aria-hidden="true" focusable="false"><use href="#ws-mark-wone"/></svg></span><span class="ws-text"><h3><a href="https://www.wolfram.com/wolfram-one/?source=verticals-products">Wolfram|One</a></h3><p class="ws-copy-full">The definitive Wolfram Language and notebook experience</p><p class="ws-copy-short">The definitive Wolfram Language and notebook experience</p></span></div><div class="ws-product"><span class="ws-chip"><svg class="ws-mark" viewBox="-4.61 4.51 68.67 68.67" aria-hidden="true" focusable="false"><use href="#ws-mark-ai"/></svg></span><span class="ws-text"><h3><a href="https://www.wolfram.com/artificial-intelligence/?source=verticals-products">AI Products</a></h3><p class="ws-copy-full">Add computational knowledge and Wolfram capabilities to make your AI smarter.</p><p class="ws-copy-short">Add computational knowledge and Wolfram capabilities</p></span></div><div class="ws-product"><span class="ws-chip"><svg class="ws-mark" viewBox="-2.37 -2.04 59.92 59.92" aria-hidden="true" focusable="false"><use href="#ws-mark-quezzio"/></svg></span><span class="ws-text"><h3><a href="https://www.wolfram.com/quezzio/?source=verticals-products">Quezzio</a></h3><p class="ws-copy-full">Flexible math &amp; science classroom question generation and auto-grading for practice and assessment.</p><p class="ws-copy-short">Flexible math &amp; science classroom question generation and auto-grading</p></span></div></div><div class="ws-product-rows"><div class="ws-product-row"><span class="ws-chip"><svg class="ws-mark" viewBox="-4.07 -3.02 44.12 44.12" aria-hidden="true" focusable="false"><use href="#ws-mark-wu"/></svg></span><span class="ws-text"><h3><a href="https://www.wolfram.com/wolfram-u/?source=verticals-products">Wolfram U</a></h3><p class="ws-copy-full">Courses in computing, science, life and more</p><p class="ws-copy-short">Courses in computing, science, life and more</p></span></div><div class="ws-product-row"><span class="ws-chip"><svg class="ws-mark" viewBox="-11.97 -8.65 84.51 84.51" aria-hidden="true" focusable="false"><use href="#ws-mark-etext"/></svg></span><span class="ws-text"><h3><a href="https://www.wolfram-media.com/series/etextbooks/">Wolfram eTextbook Series</a></h3><p class="ws-copy-full">Book collection covers computational topics, highly focused on real-world applications.</p><p class="ws-copy-short">Book collection covers computational topics</p></span></div></div></div></section>
+<div id="ws-toggle" role="group" aria-label="Review options"><span class="ws-tg-label">Tile</span><button type="button" data-l="a" aria-pressed="true">A<span class="ws-tg-i"> current</span></button><button type="button" data-l="b" aria-pressed="false">B<span class="ws-tg-i"> chip</span></button><button type="button" data-l="c" aria-pressed="false">C<span class="ws-tg-i"> grid</span></button><button type="button" data-l="d" aria-pressed="false">D<span class="ws-tg-i"> name only</span></button><button type="button" data-l="e" aria-pressed="false">E<span class="ws-tg-i"> one line</span></button><button type="button" data-l="f" aria-pressed="false">F<span class="ws-tg-i"> strip</span></button><span class="ws-tg-sep"></span><span class="ws-tg-label">Copy</span><button type="button" data-c="full" aria-pressed="true">Full</button><button type="button" data-c="short" aria-pressed="false">Short</button><span class="ws-tg-sep"></span><span class="ws-tg-label">Frame</span><button type="button" data-f="normal" aria-pressed="true">Normal</button><button type="button" data-f="tight" aria-pressed="false">Tight</button><span class="ws-tg-h" id="ws-tg-h" title="Section height"></span></div><script>(function(){var t=document.getElementById("ws-toggle"),s=document.getElementById("products"),h=document.getElementById("ws-tg-h");function press(b,k){t.querySelectorAll("button["+k+"]").forEach(function(x){x.setAttribute("aria-pressed",x===b)})}t.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(b.dataset.l){[..."bcdef"].forEach(function(k){s.classList.remove("ws-l-"+k)});if(b.dataset.l!=="a")s.classList.add("ws-l-"+b.dataset.l);press(b,"data-l")}else if(b.dataset.c){s.classList.toggle("ws-short",b.dataset.c==="short");press(b,"data-c")}else{s.classList.toggle("ws-tight",b.dataset.f==="tight");press(b,"data-f")}});function u(){h.textContent=Math.round(s.getBoundingClientRect().height)+"px"}new ResizeObserver(u).observe(s);u();})();</script>
 <script id="ws-products-js">
 /* The bar reveals once the hero scrolls out of view. This is the only script the section needs:
    its position, height and anchor offsets are all CSS. A scroll-driven CSS animation could

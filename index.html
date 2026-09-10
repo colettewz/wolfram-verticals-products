@@ -36,6 +36,13 @@ a.card:focus-visible{outline:2px solid var(--purple-light);outline-offset:3px}
 .body p{margin:0;color:var(--muted);font-size:15px}
 .go{color:var(--purple-light);font-weight:600;white-space:nowrap}
 .go::after{content:"\00a0\00bb"}
+table.opts{border-collapse:collapse;width:100%;margin:0 0 20px;font-size:14.5px}
+table.opts th{text-align:left;color:var(--muted);font-weight:600;font-size:12px;
+  text-transform:uppercase;letter-spacing:.06em;padding:0 12px 8px 0;border-bottom:1px solid var(--divider)}
+table.opts td{padding:9px 12px 9px 0;border-bottom:1px solid var(--divider);vertical-align:top}
+table.opts td:first-child{color:#fff;font-weight:600;white-space:nowrap}
+table.opts td:nth-child(2){color:var(--purple-light);white-space:nowrap}
+table.opts td:last-child{color:var(--muted)}
 .foot{border-top:1px solid var(--divider);padding-top:28px;color:var(--muted);font-size:15px}
 .foot p{margin:0 0 10px;max-width:70ch}
 .foot a{color:var(--purple-light)}
@@ -51,9 +58,18 @@ a.card:focus-visible{outline:2px solid var(--purple-light);outline-offset:3px}
   <h1>Products of Relevance</h1>
   <p class="lede">A new section for the <code>wolfram.com/for/*</code> vertical pages, showing the
   Wolfram products relevant to each vertical.</p>
-  <p class="note">The section sits after Customer Stories and before Features. Products you buy
-  are shown first, then courses and books. That second tier only appears when a vertical has
-  learning offers, so most pages are just products.</p>
+  <p class="note">The section sits after Customer Stories and before Features. Each page carries
+  a review toggle at the bottom right with three independent switches, so the two questions from
+  the 10 September review can be judged separately.</p>
+
+  <table class="opts">
+    <tr><th>Switch</th><th>Choices</th><th>What it changes</th></tr>
+    <tr><td>Tile</td><td>A&ndash;F</td><td>A current &middot; B chip &middot; C grid &middot; D name only &middot; E one line &middot; F pills</td></tr>
+    <tr><td>Copy</td><td>Full / Short</td><td>The description line, trimmed at a clause boundary</td></tr>
+    <tr><td>Frame</td><td>Normal / Tight</td><td>Section padding: 72px, or the 40px Customer Stories already uses</td></tr>
+  </table>
+  <p class="note">The badge on the toggle reports the live section height, so any combination can
+  be compared directly. On the math page the range runs from 514px down to 222px.</p>
 
   <div class="grid">
     <a class="card" href="ag-tech-products-compact.html">
