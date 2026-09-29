@@ -631,6 +631,9 @@ section.quote-section .cd-hero__slide--selected { transform: translateY(0); }
   .ws-compact .ws-product { padding: var(--s-5) var(--s-6); }
   .ws-compact .ws-row-main { flex-direction: row; align-items: flex-start; }
   .ws-compact .ws-product-row .ws-mark { align-self: flex-start; }
+  /* The first version wraps rows here to stack the mark; a compact row keeps it beside the
+     title, as the product tiles do. */
+  .ws-compact .ws-product-row { flex-wrap: nowrap; }
 }
 
 /* Rows share the tile tint, so both tiers carry the same weight of colour. */
