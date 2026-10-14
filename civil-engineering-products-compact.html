@@ -424,11 +424,16 @@
 #ws-subnav a, #ws-subnav a:hover { text-decoration: none; }
 .ws-subnav-ctas { display: flex; gap: 10px; }
 .ws-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  padding: 8px 20px 9px; border-radius: var(--radius-round, 50px); font-size: 14.5px;
+  padding: 9px 20px 8px; border-radius: var(--radius-round, 50px); font-size: 14.5px;
   font-weight: 600; text-decoration: none; line-height: 1.2; }
-.ws-btn-primary { background: var(--btn-consulting, #5F91E2); color: #fff;
-  border: 1px solid var(--btn-consulting, #5F91E2); }
-.ws-btn-primary:hover { filter: brightness(1.1); }
+/* The page's --btn-consulting (#5F91E2) carries white text at 3.17:1, under AA's 4.5:1. The
+   same hue (OKLCH), deepened to pass (4.6:1); hover deepens a visible step further (6.9:1), as
+   the page's red and orange buttons darken on hover. */
+:root { --btn-consulting: #4474C3; --btn-consulting-hover: #2B58A2; }
+.ws-btn-primary { background: var(--btn-consulting); color: #fff;
+  border: 1px solid var(--btn-consulting); }
+.ws-btn-primary:hover { background: var(--btn-consulting-hover);
+  border-color: var(--btn-consulting-hover); }
 .ws-btn-secondary { background: var(--btn-secondary-bg, transparent);
   border: 1px solid var(--btn-secondary-border, #82C2FF);
   color: var(--btn-secondary-color, #82C2FF); }
@@ -449,7 +454,7 @@
   .ws-subnav-ctas { order: -1; flex: 0 0 auto; }
   .ws-subnav-links { display: flex; margin-left: 0; gap: 20px; flex: 0 0 auto; }
   .ws-subnav-links a { white-space: nowrap; }
-  .ws-btn { padding: 6px 16px 7px; font-size: 13.5px; }
+  .ws-btn { padding: 7px 16px 6px; font-size: 13.5px; }
   .ws-subnav-links a { display: inline-flex; align-items: center; min-height: 44px; }
 }
 /* Touch targets. The pills stand 31-36px and the links 41px, under the 44px minimum. The links
